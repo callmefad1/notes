@@ -53,32 +53,29 @@ kubectl describe svc my-service -n test-namespace
 
 - **my-pod:**
 
-```
-vim my-pod.yaml
-```
+`vim my-pod.yaml`
 
-`apiVersion: v1
-kind: Pod
-metadata:
+```
+apiVersion: v1 
+kind: Pod 
+metadata: 
   name: my-pod
-  namespace: test-namespace
-  labels:
-    app: nginx
-spec:
-  containers:`
-
-  `- name: nginx`  
-    `image: nginx:latest`  
-  `ports:`
-
-  `- containerPort: 80`
-
- 
+  namespace: test-namespace   
+  labels:     
+    app: nginx 
+spec:   
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+```
 
 - **my-service:**
 
+`vim my-service.yaml`
+
 ```
-vim my-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -94,12 +91,11 @@ spec:
   type: ClusterIP
 ```
 
-  
 apply
 
 ```
-kubectl apply -f my-pod.yaml
-kubectl apply -f my-service.yaml
+k apply -f my-pod.yaml
+k apply -f my-service.yaml
 ```
 
 ---
@@ -121,22 +117,22 @@ kubectl apply -f my-service.yaml
 **Create ConfigMap**
 
 ```
-kubectl create configmap app-config --from-literal=DB_HOST=mysql
+k create configmap app-config --from-literal=DB_HOST=mysql
 ```
 
 Verify
 
-`kubectl get configmap app-config`
+`k get configmap app-config`
 
 Create Secret
 
 ```
-kubectl create secret generic app-secret --from-literal=DB_PASSWORD=Secure
+k create secret generic app-secret --from-literal=DB_PASSWORD=Secure
 ```
 
 Verify
 
-`kubectl get secret app-secret`
+`k get secret app-secret`
 
 **Create Pod configered-app.yaml using dry-run:**
 
@@ -222,7 +218,22 @@ spec:
 ```
 
 ```
-kubectl apply -f config-secret-pod.yaml
+k apply -f app-config.yaml
+k apply -f app-secret.yaml
+k apply -f configured-app.yaml
 ```
+
+verify:
+
+`k exec -it configured-app -- /bin/bash`
+
+`cat /etc/config/DB_HOST` 
+
+`cat /etc/secret/DB_PASSWORD`
+
+output:
+
+1.     mysql
+2.     Secure
 
  
