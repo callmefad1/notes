@@ -116,6 +116,15 @@ incoming code from origin/master
      git commit -m "Keep remote changes"
 ```
 
+```
+#push NEW changes
+     git push origin master
+```
+
+```
+git push -f origin master
+```
+
 ---
 
  
