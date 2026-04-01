@@ -2,7 +2,7 @@
 
 - [ ] .net
 - [ ] angular
-- [ ] mobile
+- [x] mobile
 - [ ] dev (angular + springboot)
 - [ ] BI
 - [ ] Big data
