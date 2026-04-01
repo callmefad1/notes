@@ -6,7 +6,9 @@
   },
   "editorFont": null,
   "gitEnabled": null,
-  "pinnedNoteIds": null,
+  "pinnedNoteIds": [
+    "projects"
+  ],
   "textDirection": null,
   "editorWidth": "custom",
   "defaultNoteName": "Untitled",
