@@ -321,14 +321,14 @@ module.exports = mongoose.model('User', userSchema);
 ```javascript
 const User = require('./models/user');
 
-const createUser = async (req, res, next) => {
+const createUser = async (req, res) => {
   try {
     req.body.createdBy = req.user.id;
 
     const user= await User.create(req.body);
     res.status(201).json({ success: true, user});
   } catch (error) {
-    console.log("sth went wrong", err);
+    console.error("sth went wrong", err);
   }
 };
 
@@ -346,7 +346,7 @@ module.exports ={ createUser };
 ```javascript
 const Etudiant = require('./models/Etudiant');
 
-router.get('/etudiants', async (req, res, next) => {
+router.get('/etudiants', async (req, res) => {
   try {
     const clients = await Etudiant.find();
     res.status(200).json(etudiants);
