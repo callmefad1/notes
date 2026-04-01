@@ -15,5 +15,5 @@
   "interfaceZoom": 1.0,
   "customEditorWidthPx": 768,
   "ollamaModel": null,
-  "foldersEnabled": null
+  "foldersEnabled": false
 }
