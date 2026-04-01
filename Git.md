@@ -52,7 +52,7 @@ git push -u origin main
     git clone https://github.com/fadihajji1/Recouvra.git
 #Then go into the folder:
     cd Recouvra
-#Then switch to master (if needed):
+#must switch to master:
     git checkout -b master
 ```
 
@@ -87,7 +87,18 @@ incoming code from origin/master
 >>>>>>> origin/master
 ```
 
-2. **accept or decline changes in each file**
+2. **accept or decline changes in each file then:**
+
+```
+   git add .
+   git commit -m "merge request"
+#push NEW changes
+   git push origin master
+#or
+   git push -f origin maste
+```
+
+---
 
 # or
 
@@ -96,7 +107,7 @@ incoming code from origin/master
 - `--ours` → keeps **your local changes**
 - `--theirs` → keeps **remote repository changes**
 
-#### ****Keep local version for a specific file**
+####       ****Keep local version for a specific file**
 
 ```
 #keep local version for specific file     
@@ -108,12 +119,13 @@ incoming code from origin/master
      git commit -m "Keep local changes"
 ```
 
-#### ****Keep remote version instead (for comparison)**
+####       ****Keep remote version instead (for comparison)**
 
 ```
 #keep Remote version for specific file
      git checkout --theirs app.js
      git add app.js
+
 #or keep all Remote version
      git checkout --theirs .
      git add .
