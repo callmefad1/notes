@@ -1,14 +1,10 @@
 # CKAD ex4-STORAGE: PV, PVC, StorageClass
 
- 
-
 > ### **Task 1:**
 >
 > 1. Create a PV named my-pv with 1Gi of storage.
 > 2. Create a PVC named my-pvc requesting 1Gi of storage.
 > 3. Create a pod named nginx-pod-with-pv and mount the PVC.
-
- 
 
 ***Declarative*** 
 
@@ -101,8 +97,6 @@ k describe pod nginx-pod-with-pv
 >
 > Deploy a **Pod** that mounts the PVC
 
- 
-
 1. **StorageClass**
   ```bash
   vim storageclassnew.yaml
@@ -143,31 +137,50 @@ k describe pod nginx-pod-with-pv
   k get pv
   ```
 3. **PVC**
-
-```
-vim my-pvc-4gi.yaml
-```
-
-```
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: my-pvc-4gi
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 4Gi
-  storageClassName: storageclassnew
-```
-
-```
-
-```
-
- 
-
- 
+  ```
+  vim my-pvc-4gi.yaml
+  ```
+  ```
+  apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: my-pvc-4gi
+  spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 4Gi
+    storageClassName: storageclassnew
+  ```
+  ```
+  k apply -f my-pvc-4gi.yaml
+  k get pvc
+  ```
+4. Deploy a Pod that mounts the PVC
+  ```
+  vim my-pod-4gi.yaml
+  ```
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: my-pod-4gi
+  spec:
+    containers:
+      - name: nginx
+        image: nginx
+        volumeMounts:
+          - name: my-storage
+            mountPath: /usr/share/nginx/html
+    volumes:
+      - name: my-storage
+        persistentVolumeClaim:
+          claimName: my-pvc-4gi
+  ```
+  ```
+  k apply -f my-pod-4gi.yaml
+  k get pods
+  ```
 
  
