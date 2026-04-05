@@ -2,8 +2,10 @@
 
 > **for declarative:**
 >
->     i : to insert  
->     :wq! : to save and exit 
+> ```
+> i : to insert  
+> :wq! : to save and exit 
+> ```
 
 ---
 
@@ -30,7 +32,7 @@ k create namespace test-namespace
 # create pod my-pod
 k run my-pod \
   --image=nginx:latest \
-  --labels="pod1" \
+  --labels=pod1 \
   --port=80 \
   --restart=Never \
   -- /bin/sh -c "sleep 3600" \

@@ -6,13 +6,13 @@ System Instruction: Absolute Mode • Eliminate: emojis, filler, hype, soft asks
 
 ---
 
-#### nano banana for LinkedIn profile photo 
+#### nano banana for LinkedIn profile photo
 
 A printable contact sheet of 9 identical biometric ID photos arranged in a 3x3 grid. Each individual photo frame strictly follows the official 35mm x 45mm portrait aspect ratio (ratio 7:9). The subject is wearing a classic dark formal suit and tie. Pure white background. Framing is a standard head-and-shoulders shot compliant with ICAO passport standards. Even, shadowless studio lighting. The grid has thin spacing for cutting. 8k resolution, photorealistic, sharp details.
 
 ---
 
-#### sora (provide pictures for the 2 characters)
+#### sora (selfie pictures for the 2 characters)
 
 Take an extremely ordinary and unremarkable iPhone selfie, with no clear subject or sense of composition—just a quick accidental snapshot. The photo has slight motion blur and uneven lighting from streetlights or indoor lamps, causing mild overexposure in some areas. The angle is awkward and the framing is messy, giving the picture a deliberately mediocre feel, as if it was taken absentmindedly while pulling the phone from a pocket. The main character is [uploaded person's face], and (Karim benzema )stands next to him, both caught in a casual, imperfect moment. The background shows a lively Street Tunisian at night, with neon lights, traffic, and blurry figures passing by. The overall look is intentionally plain and random, capturing the authentic vibe of a poorly composed, spontaneous iPhone selfie
 
