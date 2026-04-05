@@ -56,9 +56,9 @@ spec:
 
 ```
 # apply it
-k apply -f my-pv.yaml 
+k apply -f my-pvc.yaml 
 # verify
-k get pv
+k get pvc
 ```
 
 1. **create a Pod and mount the PVC**
@@ -100,6 +100,71 @@ k describe pod nginx-pod-with-pv
 > 3. Create a **PersistentVolumeClaim (PVC)** that binds to the PV.
 >
 > Deploy a **Pod** that mounts the PVC
+
+ 
+
+1. **StorageClass**
+  ```bash
+  vim storageclassnew.yaml
+  ```
+  ```
+  apiVersion: storage.k8s.io/v1
+  kind: StorageClass
+  metadata:
+    name: storageclassnew
+  provisioner: kubernetes.io/no-provisioner
+  volumeBindingMode: WaitForFirstConsumer
+  ```
+  ```
+  k apply -f storageclassnew.yaml
+  k get storageclass
+  ```
+2. **PV**
+  ```bash
+  vim my-pv-4gi.yaml
+  ```
+  ```
+  apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: my-pv-4gi
+  spec:
+    capacity:
+      storage: 4Gi
+    accessModes:
+      - ReadWriteOnce
+    persistentVolumeReclaimPolicy: Retain
+    storageClassName: storageclassnew
+    hostPath:
+      path: /mnt/data4gi
+  ```
+  ```
+  k apply -f my-pv-4gi.yaml
+  k get pv
+  ```
+3. **PVC**
+
+```
+vim my-pvc-4gi.yaml
+```
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc-4gi
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+  storageClassName: storageclassnew
+```
+
+```
+
+```
 
  
 
