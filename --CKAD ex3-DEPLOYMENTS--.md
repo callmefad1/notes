@@ -38,12 +38,15 @@ kubectl rollout history deployment/nginx-deployment
 - In Kubernetes, **Recreate** is an update strategy.
 - You need to change the deployment strategy from **RollingUpdate** to **Recreate**.
 
-```bash
+```yaml
 kubectl edit deployment nginx-deployment
 # in yaml file, replace entire strategy section:
 # from
 strategy:
-  type: RollingUpdate
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
 # to:
 strategy:
   type: Recreate

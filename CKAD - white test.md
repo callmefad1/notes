@@ -161,8 +161,6 @@ kubectl logs -f logging-pod > logs.txt
 > - Comprendre l'utilisation des labels.
 > - Apprendre à filtrer des pods avec kubectl.
 
- 
-
 #### ***Impératif :***
 
 ```
@@ -293,6 +291,129 @@ kubectl set image deployment/web-recreate nginx=nginx:1.20
 
 # observe
 kubectl get pods -w
+```
+
+---
+
+### **Exercice 7: Rolling Update Strategy**
+
+- Créez un déploiement web-rolling avec nginx:1.18, puis effectuez une mise à jour vers nginx:1.21 en **Rolling Update**.
+
+> **Objectifs:**
+>
+> - Configurer la stratégie RollingUpdate.
+> - Définir maxUnavailable: 1 et maxSurge: 1.
+> - Vérifier l'état avec kubectl rollout status.
+
+***Déclaratif :***
+
+`vim deploy.yaml`
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-rolling
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: web-rolling
+  template:
+    metadata:
+      labels:
+        app: web-rolling
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.18
+```
+
+```
+kubectl apply -f deploy.yaml
+```
+
+```
+# update version
+kubectl set image deployment/web-rolling nginx=nginx:1.21
+# Vérification :
+kubectl rollout status deployment/web-rolling
+kubectl get pods -w
+```
+
+---
+
+### **Exercice 8: Rollback d'un Déploiement**
+
+- Créez un déploiement web-rollback avec nginx:1.17, effectuez deux mises à jour (nginx:1.19 puis nginx:1.22), puis revenez à nginx:1.19 avec kubectl rollout undo.
+
+> **Objectifs:**
+>
+> - Vérifier l'historique avec kubectl rollout history.
+> - Annuler la mise à jour et observer le rollback.
+> - Vérifier la version actuelle avec kubectl get pods -o wide
+
+ 
+
+***Impératif :***
+
+```
+kubectl create deployment web-rollback --image=nginx:1.17 --replicas=2
+```
+
+```
+kubectl set image deployment/web-rollback nginx=nginx:1.19
+kubectl set image deployment/web-rollback nginx=nginx:1.22
+```
+
+```
+kubectl rollout undo deployment/web-rollback
+```
+
+***Déclaratif :***
+
+`vim deploy.yaml`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-rollback
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-rollback
+  template:
+    metadata:
+      labels:
+        app: web-rollback
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.17
+```
+
+```
+kubectl apply -f deploy.yaml
+# Mises à jour :
+kubectl set image deployment/web-rollback nginx=nginx:1.19
+kubectl set image deployment/web-rollback nginx=nginx:1.22
+
+# Historique :
+kubectl rollout history deployment/web-rollback
+
+# Rollback vers révision précédente (1.19) :
+kubectl rollout undo deployment/web-rollback
+
+# verify status & pod
+kubectl rollout status deployment/web-rollback
+kubectl get pods -o wide
 ```
 
  
