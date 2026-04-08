@@ -23,6 +23,12 @@ kubectl scale deployment nginx-deployment --replicas=2
 kubectl patch deployment <dep-name> -p '{"spec":{"replicas":3}}'
 ```
 
+**delete deployment**
+
+```
+kubectl delete deployment <deployment-name>
+```
+
 - **rollout** : used for updating
 
 ```bash

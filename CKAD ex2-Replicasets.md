@@ -7,7 +7,13 @@
 k create rs rs-apache --image=httpd:2.4 
  --replicas=2 
  --dry-run=client 
- -o yaml > rs-apache.yaml
+ -o yaml > rs-apache.yaml 
+```
+
+**Delete a ReplicaSet**
+
+```
+kubectl delete rs <replicaset-name>
 ```
 
 ---

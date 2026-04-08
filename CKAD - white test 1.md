@@ -1,4 +1,4 @@
-# CKAD - white test
+# CKAD - white test 1
 
 white test 1
 
@@ -357,8 +357,6 @@ kubectl get pods -w
 > - Vérifier l'historique avec kubectl rollout history.
 > - Annuler la mise à jour et observer le rollback.
 > - Vérifier la version actuelle avec kubectl get pods -o wide
-
- 
 
 ***Impératif :***
 

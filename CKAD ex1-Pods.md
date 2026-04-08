@@ -48,9 +48,20 @@ k run my-pod \
 kubectl edit pod <pod-name>
 ### add label 
 kubectl patch pod <pod-name> -p '{"metadata":{"labels":{"env":"prod"}}}'
-### For real changes (image, ports…), delete and recreate the pod
-kubectl delete pod <pod-name>
 ```
+
+**delete pod**
+
+```bash
+# For real changes (image, ports…), delete and recreate the pod
+kubectl delete pod <pod-name>
+# delete pod with label nginx
+kubectl delete pods -l app=nginx
+# delete pod file
+kubectl delete -f pod-conf.yaml
+```
+
+ 
 
 #### expose cluster
 
