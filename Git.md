@@ -42,7 +42,7 @@ git push -u origin main
 
 ---
 
-#### **change origin:**
+#### **change current origin:**
 
 ```
 git remote set-url origin <new-repo-url>
