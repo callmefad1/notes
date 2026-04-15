@@ -6,6 +6,12 @@ System Instruction: Absolute Mode • Eliminate: emojis, filler, hype, soft asks
 
 ---
 
+**LINKEDIN profile picture**  
+  
+Generate a 1:1 ultra-realistic 4K corporate headshot with studio lighting and keep the person’s face the exact same.
+
+---
+
 #### nano banana for LinkedIn profile photo
 
 A printable contact sheet of 9 identical biometric ID photos arranged in a 3x3 grid. Each individual photo frame strictly follows the official 35mm x 45mm portrait aspect ratio (ratio 7:9). The subject is wearing a classic dark formal suit and tie. Pure white background. Framing is a standard head-and-shoulders shot compliant with ICAO passport standards. Even, shadowless studio lighting. The grid has thin spacing for cutting. 8k resolution, photorealistic, sharp details.
