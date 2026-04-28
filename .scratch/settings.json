@@ -15,7 +15,7 @@
   "interfaceZoom": 1.0,
   "customEditorWidthPx": 768,
   "ollamaModel": null,
-  "foldersEnabled": false,
+  "foldersEnabled": true,
   "ignoredPatterns": null,
   "customColorsLight": null,
   "customColorsDark": null
